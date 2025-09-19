@@ -354,6 +354,8 @@ class Validator implements ValidatorContract
         $this->customAttributes = $attributes;
 
         $this->setRules($rules);
+
+        $this->messages = new MessageBag;
     }
 
     /**
@@ -458,8 +460,6 @@ class Validator implements ValidatorContract
      */
     public function passes()
     {
-        $this->messages = new MessageBag;
-
         [$this->distinctValues, $this->failedRules] = [[], []];
 
         // We'll spin through each rule, validating the attributes attached to that
